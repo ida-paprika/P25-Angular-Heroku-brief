@@ -100,10 +100,29 @@
               "src/styles.css"
             ],
             "scripts": []
+          },
+          "configurations": {
+            "ci": {
+              "watch": false,
+              "progress": false,
+              "browsers": "ChromeHeadlessCI"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }
     }
   },
-  "defaultProject": "angular-heroku-brief"
+  "defaultProject": "angular-heroku-brief",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
