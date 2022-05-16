@@ -52,20 +52,20 @@ jobs:
         name: devops-test-${{ github.run_id }}-${{ github.run_number }}
         path: ./dist/devops-test
 
-    deploy: 
-      needs: build
-      runs-on: ubuntu-latest
+  deploy: 
+    needs: build
+    runs-on: ubuntu-latest
 
-      steps: 
-      - name: Dowload artifact
-        uses: actions/download-artifact@v2
-        with: 
-          name: devops-test-${{ github.run_id }}-${{ github.run_number }} 
-          path: './build'
+    steps: 
+    - name: Dowload artifact
+      uses: actions/download-artifact@v2
+      with: 
+        name: devops-test-${{ github.run_id }}-${{ github.run_number }} 
+        path: './build'
 
-      - name: Deploy to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+    - name: Deploy to Heroku
+      uses: akhileshns/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+        heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+        heroku_email: ${{ secrets.HEROKU_EMAIL }}
