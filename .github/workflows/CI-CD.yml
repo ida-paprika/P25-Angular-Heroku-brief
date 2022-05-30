@@ -57,11 +57,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps: 
-    - name: Dowload artifact
-      uses: actions/download-artifact@v2
-      with: 
-        name: angular-heroku-brief-${{ github.run_id }}-${{ github.run_number }} 
-        path: './build'
+    # - name: Dowload artifact
+    #   uses: actions/download-artifact@v2
+    #   with: 
+    #     name: angular-heroku-brief-${{ github.run_id }}-${{ github.run_number }} 
+    #     path: './build'
+    - uses: actions/checkout@v2
 
     - name: Deploy to Heroku
       uses: akhileshns/heroku-deploy@v3.12.12
