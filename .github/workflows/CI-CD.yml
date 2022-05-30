@@ -49,8 +49,8 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with: 
-        name: devops-test-${{ github.run_id }}-${{ github.run_number }}
-        path: ./dist/devops-test
+        name: angular-heroku-brief-${{ github.run_id }}-${{ github.run_number }}
+        path: ./dist/angular-heroku-brief
 
   deploy: 
     needs: build
@@ -60,7 +60,7 @@ jobs:
     - name: Dowload artifact
       uses: actions/download-artifact@v2
       with: 
-        name: devops-test-${{ github.run_id }}-${{ github.run_number }} 
+        name: angular-heroku-brief-${{ github.run_id }}-${{ github.run_number }} 
         path: './build'
 
     - name: Deploy to Heroku
